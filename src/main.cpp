@@ -90,7 +90,6 @@ int main()
         // Draw our first triangle
         useShaderProgram();
         glBindVertexArray(VAO);
-        //glDrawArrays(GL_TRIANGLES, 0, 6);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
 
@@ -116,8 +115,5 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 // Is called when the screen is resized
 void window_size_callback(GLFWwindow* window, int width, int height)
 {
-	// Define the viewport dimensions
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);  
     glViewport(0, 0, width, height);
 }
