@@ -11,6 +11,7 @@
 
 // Function prototypes
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
+void window_size_callback(GLFWwindow* window, int width, int height);
 
 // Window dimensions
 const GLuint WIDTH = 800, HEIGHT = 600;
@@ -32,16 +33,12 @@ int main()
 
     // Set the required callback functions
     glfwSetKeyCallback(window, key_callback);
+    glfwSetWindowSizeCallback(window, window_size_callback);
 
     // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
     glewExperimental = GL_TRUE;
     // Initialize GLEW
     glewInit();
-
-    // Define the viewport dimensions
-    int width, height;
-    glfwGetFramebufferSize(window, &width, &height);  
-    glViewport(0, 0, width, height);
 
 	initVertexShader();
 	initFragmentShader();
@@ -76,6 +73,8 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, 0); // Note that this is allowed, the call to glVertexAttribPointer registered VBO as the currently bound vertex buffer object so afterwards we can safely unbind
 
     glBindVertexArray(0); // Unbind VAO (it's always a good thing to unbind any buffer/array to prevent strange bugs), remember: do NOT unbind the EBO, keep it bound to this VAO
+
+	glfwSetWindowSize(window, 1080, 720);
 
     // Game loop
     while (!glfwWindowShouldClose(window))
@@ -112,4 +111,13 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
+// Is called when the screen is resized
+void window_size_callback(GLFWwindow* window, int width, int height)
+{
+	// Define the viewport dimensions
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);  
+    glViewport(0, 0, width, height);
 }
