@@ -7,6 +7,7 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
+#include "math/math.h"
 #include "shader.h"
 
 // Function prototypes
@@ -18,6 +19,11 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 
 int main()
 {
+	std::cout << std::endl << std::endl << "******" << std::endl << "Thirds Engine Start" << std::endl << "******" << std::endl << std::endl;
+	
+	math::vec2 v = math::VEC2_X;
+	std::cout << v.toString() << std::endl;
+	
     std::cout << "Starting GLFW context, OpenGL 3.3" << std::endl;
     // Init GLFW
     glfwInit();
@@ -102,6 +108,9 @@ int main()
     glDeleteBuffers(1, &EBO);
     // Terminate GLFW, clearing any resources allocated by GLFW.
     glfwTerminate();
+    
+    std::cout << std::endl << std::endl << "******" << std::endl << "Thirds Engine End" << std::endl << "******" << std::endl << std::endl;
+    
     return 0;
 }
 
