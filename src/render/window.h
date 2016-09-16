@@ -12,11 +12,11 @@ namespace render
 		void init(int width, int height, char* title);
 		
 		void start();
-		//void stop();
+		void stop();
 		
-		//void render();
+		void render();
 		//void update();
 		
-		//void dispose();
+		void dispose();
 	}
 }
