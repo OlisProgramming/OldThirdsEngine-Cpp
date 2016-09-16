@@ -21,8 +21,8 @@ int main()
 {
 	std::cout << std::endl << std::endl << "******" << std::endl << "Thirds Engine Start" << std::endl << "******" << std::endl << std::endl;
 	
-	math::vec2 v = math::VEC2_X;
-	std::cout << v.toString() << std::endl;
+	float v = math::vec2::initX().dot(math::vec2::initY());
+	std::cout << v << std::endl;
 	
     std::cout << "Starting GLFW context, OpenGL 3.3" << std::endl;
     // Init GLFW

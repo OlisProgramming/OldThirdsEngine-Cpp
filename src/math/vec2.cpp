@@ -15,6 +15,26 @@ namespace math {
 		this->x = x;
 		this->y = y;
 	}
+	
+	vec2 vec2::initX()
+	{
+		return vec2(1.0f, 0.0f);
+	}
+	
+	vec2 vec2::initY()
+	{
+		return vec2(0.0f, 1.0f);
+	}
+	
+	vec2 vec2::initZero()
+	{
+		return vec2(0.0f, 0.0f);
+	}
+	
+	float vec2::dot(vec2 other)
+	{
+		return x*other.x + y*other.y;
+	}
 
 	float vec2::len()
 	{
