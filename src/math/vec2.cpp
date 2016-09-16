@@ -1,4 +1,3 @@
-#include <string>
 #include <cmath>
 
 #include "vec2.h"
