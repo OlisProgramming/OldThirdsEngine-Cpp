@@ -17,6 +17,9 @@ namespace render
 		void render();
 		//void update();
 		
+		void key_callback(int key, int scancode, int action, int mode);
+		void window_size_callback(int width, int height);
+		
 		void dispose();
 	}
 }

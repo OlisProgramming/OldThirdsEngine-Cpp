@@ -34,12 +34,11 @@ int main()
 // Is called whenever a key is pressed/released via GLFW
 void key_callback(GLFWwindow* glfwWindow, int key, int scancode, int action, int mode)
 {
-    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(glfwWindow, GL_TRUE);
+    render::window::key_callback(key, scancode, action, mode);
 }
 
 // Is called when the screen is resized
 void window_size_callback(GLFWwindow* glfwWindow, int width, int height)
 {
-    glViewport(0, 0, width, height);
+    render::window::window_size_callback(width, height);
 }
