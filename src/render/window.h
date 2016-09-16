@@ -1,22 +1,22 @@
 #pragma once
 
+// GLFW
+#include <GLFW/glfw3.h>
+
 namespace render
 {
-	class Window
+	namespace window
 	{
-	public:
-		GLFWwindow* glfwWindow;
+		extern GLFWwindow* glfwWindow;
 		
-		Window(int width, int height, char* title);
-		~Window();
+		void init(int width, int height, char* title);
 		
 		void start();
 		//void stop();
 		
-	private:
 		//void render();
 		//void update();
 		
 		//void dispose();
-	};
+	}
 }
