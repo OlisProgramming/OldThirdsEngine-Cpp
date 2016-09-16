@@ -34,7 +34,7 @@ int main()
     glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 
 	// Create Window
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "ThirdsEngine", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Thirds Engine | Version 0.1", NULL, NULL);
     glfwMakeContextCurrent(window);
 
     // Set the required callback functions
