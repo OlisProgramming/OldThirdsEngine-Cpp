@@ -21,6 +21,7 @@ namespace render
 
 			// Create Window
 			glfwWindow = glfwCreateWindow(width, height, title, NULL, NULL);
+			glfwSetWindowPos(glfwWindow, (glfwGetVideoMode(glfwGetPrimaryMonitor())->width - width) / 2, (glfwGetVideoMode(glfwGetPrimaryMonitor())->height - height) / 2);
 			glfwMakeContextCurrent(glfwWindow);
 
 			// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
