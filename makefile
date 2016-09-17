@@ -4,6 +4,7 @@ ThirdsEngine: build/main.o
 		build/math/vec3.o \
 		build/math/quat.o \
 		build/math/mat4.o \
+		build/math/transform.o \
 		build/mesh/mesh.o \
 		build/render/shader.o \
 		build/render/renderUtil.o \
@@ -30,8 +31,12 @@ build/math/mat4.o: src/math/mat4.cpp src/math/mat4.h
 build/math/quat.o: src/math/quat.cpp src/math/quat.h
 	g++ -c -std=c++11 -lstdc++ \
 		src/math/quat.cpp -o build/math/quat.o
+		
+build/math/transform.o: build/math/vec3.o build/math/mat4.o src/math/transform.cpp src/math/transform.h
+	g++ -c -std=c++11 -lstdc++ \
+		src/math/transform.cpp -o build/math/transform.o
 
-build/mesh/mesh.o: src/mesh/mesh.cpp src/mesh/mesh.h
+build/mesh/mesh.o: build/math/transform.o src/mesh/mesh.cpp src/mesh/mesh.h
 	g++ -c -std=c++11 -lstdc++ \
 		src/mesh/mesh.cpp -o build/mesh/mesh.o
 
@@ -39,7 +44,7 @@ build/render/window.o: build/render/shader.o build/mesh/mesh.o build/render/rend
 	g++ -c -std=c++11 -lstdc++ \
 		src/render/window.cpp -o build/render/window.o
 
-build/render/shader.o: src/render/shader.cpp src/render/shader.h
+build/render/shader.o: build/math/mat4.o src/render/shader.cpp src/render/shader.h
 	g++ -c -std=c++11 -lstdc++ \
 		src/render/shader.cpp -o build/render/shader.o
 		

@@ -11,6 +11,7 @@ namespace math
 		float m[4][4];
 
 		mat4();
+		static mat4 initTranslation(float x, float y, float z);
 
 		mat4 mul(mat4* other);
 

@@ -109,5 +109,10 @@ namespace render
 		{
 			glUniform1f(uniformMap[uniform], value);
 		}
+		
+		void setUniform(char* uniform, math::mat4 value)
+		{
+			glUniformMatrix4fv(uniformMap[uniform], 1, GL_TRUE, &value.m[0][0]);
+		}
 	}
 }

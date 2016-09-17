@@ -8,6 +8,19 @@ namespace math
 			for (int j=0; j<4; j++)
 				m[i][j] = 0.0f;
 	}
+	
+	mat4 mat4::initTranslation(float x, float y, float z)
+	{
+		mat4 out = mat4();
+		out.m[0][0] = 1.0f;
+		out.m[1][1] = 1.0f;
+		out.m[2][2] = 1.0f;
+		out.m[3][3] = 1.0f;
+		out.m[0][3] = x;
+		out.m[1][3] = y;
+		out.m[2][3] = z;
+		return out;
+	}
 
 	mat4 mat4::mul(mat4* other)
 	{

@@ -47,6 +47,7 @@ namespace render
 			render::shader::initFragmentShader();
 			render::shader::compileShaderProgram();
 			// Add uniforms here
+			render::shader::addUniform((char*)"transform");
 			
 			// Game loop
 			while (!glfwWindowShouldClose(glfwWindow))
@@ -68,6 +69,9 @@ namespace render
 			render::util::cls();			
 			render::shader::useShaderProgram();
 			// Set uniforms here
+			
+			// Test uniform code:
+			render::shader::setUniform((char*)"transform", math::mat4::initTranslation(1, -0.5f, 0));
 			
 			mesh_test->render();
 			
