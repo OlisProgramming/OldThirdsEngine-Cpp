@@ -9,12 +9,15 @@ namespace math {
 		vec2();
 		vec2(float x, float y);
 		
-		static vec2 initX();
-		static vec2 initY();
-		static vec2 initZero();
-		
-		float dot(vec2 other);
+		float dot(vec2* other);
 		float len();
+		vec2 nor();
+		vec2 rot(float angle);
+		
+		vec2 add(vec2* other);
+		vec2 sub(vec2* other);
+		vec2 mul(vec2* other);
+		vec2 div(vec2* other);
 		
 		std::string toString();
 		
