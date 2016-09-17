@@ -4,8 +4,7 @@
 #define GLEW_STATIC
 #include <GL/glew.h>
 
-#include "../math/math.h"
-#include "render.h"
+#include "shader.h"
 
 #include "window.h"
 

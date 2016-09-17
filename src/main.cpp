@@ -3,8 +3,7 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
-#include "math/math.h"
-#include "render/render.h"
+#include "render/window.h"
 
 // Function prototypes
 void key_callback(GLFWwindow* glfwWindow, int key, int scancode, int action, int mode);
