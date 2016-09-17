@@ -1,5 +1,6 @@
 g++ -std=c++11 \
 	src/math/vec2.cpp \
+	src/math/vec3.cpp \
 	src/render/shader.cpp \
 	src/render/window.cpp \
 	src/main.cpp \
