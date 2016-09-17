@@ -15,18 +15,18 @@ const GLuint WIDTH = 800, HEIGHT = 600;
 int main()
 {
 	std::cout << std::endl << std::endl << "******" << std::endl << "Thirds Engine Start" << std::endl << "******" << std::endl << std::endl;
-	
+
 	render::window::init(WIDTH, HEIGHT, (char*)"Thirds Engine | Version 0.1");
-	
+
 	// Set the required callback functions
 	glfwSetKeyCallback(render::window::glfwWindow, key_callback);
 	glfwSetWindowSizeCallback(render::window::glfwWindow, window_size_callback);
-	
+
 	// Start main loop
 	render::window::start();
-    
+
     std::cout << std::endl << std::endl << "******" << std::endl << "Thirds Engine End" << std::endl << "******" << std::endl << std::endl;
-    
+
     return 0;
 }
 

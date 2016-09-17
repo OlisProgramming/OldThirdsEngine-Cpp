@@ -5,6 +5,7 @@
 #include <GL/glew.h>
 
 #include "shader.h"
+#include "renderUtil.h"
 
 #include "window.h"
 
@@ -18,13 +19,8 @@ namespace render
 		void init(int width, int height, char* title)
 		{
 			std::cout << "Starting GLFW context, OpenGL 3.3" << std::endl;
-			// Init GLFW
-			glfwInit();
-			// OpenGL 3.3
-			glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-			glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-			glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-			glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
+			
+			render::util::initGraphics();
 
 			// Create Window
 			glfwWindow = glfwCreateWindow(width, height, title, NULL, NULL);
@@ -34,6 +30,8 @@ namespace render
 			glewExperimental = GL_TRUE;
 			// Initialize GLEW
 			glewInit();
+			
+			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		}
 		
 		// Starts up program
@@ -43,11 +41,10 @@ namespace render
 			render::shader::initFragmentShader();
 			render::shader::compileShaderProgram();
 			
-			glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-			
 			// Game loop
 			while (!glfwWindowShouldClose(glfwWindow))
 			{
+				
 				render();
 			}
 			dispose();
@@ -62,11 +59,10 @@ namespace render
 		// Is called when the screen must render
 		void render()
 		{
-			// Check if any events have been activiated (key pressed, mouse moved etc.) and call corresponding response functions
+			// Check if any events have been activated (key pressed, mouse moved etc.) and call corresponding response functions
 			glfwPollEvents();
 
-			// Clear colour buffer
-			glClear(GL_COLOR_BUFFER_BIT);
+			render::util::cls();
 
 			// Swap the screen buffers
 			glfwSwapBuffers(glfwWindow);
