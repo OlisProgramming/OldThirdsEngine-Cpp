@@ -9,5 +9,9 @@ namespace render
 		void initFragmentShader();
 		void compileShaderProgram();
 		void useShaderProgram();
+		
+		void addUniform(char* uniform);
+		// Overload for each uniform type
+		void setUniform(char* uniform, float value);
 	}
 }

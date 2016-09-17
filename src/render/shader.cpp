@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <unordered_map>
 
 // GLEW
 #define GLEW_STATIC
@@ -14,6 +15,8 @@ namespace render
 		GLuint vertexShader;
 		GLuint fragmentShader;
 		GLuint shaderProgram;
+		
+		std::unordered_map<char*, GLuint> uniformMap;
 
 		const char* getFileContents(const char *filename)
 		{
@@ -88,6 +91,23 @@ namespace render
 		void useShaderProgram()
 		{
 			glUseProgram(shaderProgram);
+		}
+		
+		void addUniform(char* uniform)
+		{
+			GLuint uniformLocation = glGetUniformLocation(shaderProgram, uniform);
+			
+			if (uniformLocation == -1)
+			{
+				std::cout << "ERROR::SHADER::PROGRAM::UNIFORM_LOCATION_DOES_NOT_EXIST\n";
+			}
+			
+			uniformMap[uniform] = uniformLocation;
+		}
+		
+		void setUniform(char* uniform, float value)
+		{
+			glUniform1f(uniformMap[uniform], value);
 		}
 	}
 }

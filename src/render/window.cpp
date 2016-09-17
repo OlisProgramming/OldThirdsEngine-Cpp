@@ -46,11 +46,11 @@ namespace render
 			render::shader::initVertexShader();
 			render::shader::initFragmentShader();
 			render::shader::compileShaderProgram();
+			// Add uniforms here
 			
 			// Game loop
 			while (!glfwWindowShouldClose(glfwWindow))
 			{
-				
 				render();
 			}
 			dispose();
@@ -65,8 +65,9 @@ namespace render
 		// Is called when the screen must render
 		void render()
 		{
-			render::util::cls();
+			render::util::cls();			
 			render::shader::useShaderProgram();
+			// Set uniforms here
 			
 			mesh_test->render();
 			
