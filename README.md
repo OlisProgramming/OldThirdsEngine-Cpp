@@ -1,5 +1,5 @@
 # ThirdsEngine
-A 3D OpenGL Game Engine.
+A 3D OpenGL Game Engine, using GLFW and GLEW.
 
 # Building
 To build the project (on Linux), use the supplied `makefile`. `*.o` files will be placed in the `build/` directory, with a linked executable in the main directory.
