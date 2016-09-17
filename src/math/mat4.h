@@ -10,6 +10,6 @@ namespace math
 
 		mat4();
 
-		mat4 mat4::mul(mat4* other);
+		mat4 mul(mat4* other);
 	};
 }

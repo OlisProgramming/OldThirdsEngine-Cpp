@@ -15,7 +15,7 @@ namespace math
 		
 		for (int i=0; i<4; i++)
 			for (int j=0; j<4; j++)
-				out[i][j] =
+				out.m[i][j] =
 					m[i][0] * other->m[0][j] +
 					m[i][1] * other->m[1][j] +
 					m[i][2] * other->m[2][j] +
