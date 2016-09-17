@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace math
 {
 	class mat4
@@ -11,5 +13,7 @@ namespace math
 		mat4();
 
 		mat4 mul(mat4* other);
+
+		std::string toString();
 	};
 }

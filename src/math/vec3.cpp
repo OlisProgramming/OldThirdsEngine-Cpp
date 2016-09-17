@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "vec3.h"
+#include "util.h"
 
 namespace math
 {
@@ -36,7 +37,20 @@ namespace math
 
 	vec3 vec3::rot(float angle, vec3 axis)
 	{
-		return vec3(); // TODO, it needs quaternions which are as yet unimplemented
+		float sinHalfAngle = (float)sin(angle/2 * DEG_TO_RAD);
+		float cosHalfAngle = (float)cos(angle/2 * DEG_TO_RAD);
+		
+		float rX = axis.x * sinHalfAngle;
+		float rY = axis.y * sinHalfAngle;
+		float rZ = axis.z * sinHalfAngle;
+		float rW = cosHalfAngle;
+		
+		quat rotation = quat(rX, rY, rZ, rW);
+		quat conjugate = rotation.con();
+		quat thisQuat = this->toQuat();
+		quat w = rotation.mul(&thisQuat).mul(&conjugate);
+		
+		return vec3(w.x, w.y, w.z);
 	}
 
 	vec3 vec3::crs(vec3* other)
@@ -70,6 +84,11 @@ namespace math
 	vec3 vec3::abs()
 	{
 		return vec3(std::abs(x), std::abs(y), std::abs(z));
+	}
+
+	quat vec3::toQuat()
+	{
+		return quat(x, y, z, 0.0f);
 	}
 
 	std::string vec3::toString()

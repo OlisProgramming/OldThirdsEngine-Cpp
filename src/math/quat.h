@@ -1,9 +1,12 @@
 #pragma once
 
+#include <string>
+
 namespace math
 {
 	class quat
 	{
+	public:
 		float x;
 		float y;
 		float z;
@@ -15,5 +18,7 @@ namespace math
 		float len();
 		quat con();
 		quat mul(quat* other);
+
+		std::string toString();
 	};
 }

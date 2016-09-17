@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "quat.h"
+
 namespace math
 {
 	class vec3
@@ -23,6 +25,7 @@ namespace math
 		vec3 div(vec3* other);
 
 		vec3 abs();
+		quat toQuat();
 		std::string toString();
 
 		float x;

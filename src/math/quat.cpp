@@ -37,6 +37,11 @@ namespace math
 		float y_ = y*other->w + w*other->y + z*other->x - x*other->z;
 		float z_ = z*other->w + w*other->z + x*other->y - y*other->x;
 		
-		return new Quaternion(x_, y_, z_, w_);
+		return quat(x_, y_, z_, w_);
+	}
+
+	std::string quat::toString()
+	{
+		return "(" + std::to_string(x) + ", " + std::to_string(y) + ", " + std::to_string(z) + ", " + std::to_string(w) + ")";
 	}
 }
