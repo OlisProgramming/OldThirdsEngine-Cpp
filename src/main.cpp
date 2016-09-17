@@ -7,6 +7,7 @@
 // GLFW
 #include <GLFW/glfw3.h>
 
+#include "render/shader.h"
 #include "render/window.h"
 
 // Function prototypes

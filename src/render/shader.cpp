@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 // GLEW
 #define GLEW_STATIC
@@ -14,22 +15,25 @@ namespace render
 		GLuint fragmentShader;
 		GLuint shaderProgram;
 
-		// Shaders
-		const GLchar* vertexShaderSource = "#version 330\n"
-			"layout (location = 0) in vec3 position;\n"
-			"void main()\n"
-			"{\n"
-			"gl_Position = vec4(position, 1.0);\n"
-			"}\0";
-		const GLchar* fragmentShaderSource = "#version 330\n"
-			"out vec4 fragColor;\n"
-			"void main()\n"
-			"{\n"
-			"fragColor = vec4(1.0f, 1.0f, 1.0f, 1.0f);\n"
-			"}\n\0";
-
-		void initVertexShader()
+		const char* getFileContents(const char *filename)
 		{
+			std::ifstream file(filename);
+			std::filebuf* pbuf = file.rdbuf();
+			std::size_t size = pbuf->pubseekoff(0, file.end, file.in);
+			pbuf->pubseekpos(0,file.in);
+			char* buffer = new char[size];
+			pbuf->sgetn(buffer, size);
+			file.close();
+			
+			return buffer;
+		}
+
+		// Shaders
+		const GLchar* vertexShaderSource = getFileContents("res/basicVertex.glsl");
+		const GLchar* fragmentShaderSource = getFileContents("res/basicFragment.glsl");
+			
+		void initVertexShader()
+		{			
 			// Vertex shader
 			vertexShader = glCreateShader(GL_VERTEX_SHADER);
 			glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
