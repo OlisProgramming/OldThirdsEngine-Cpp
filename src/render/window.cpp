@@ -1,9 +1,5 @@
 #include <iostream>
 
-// GLEW
-#define GLEW_STATIC
-#include <GL/glew.h>
-
 #include "shader.h"
 #include "renderUtil.h"
 
@@ -14,6 +10,7 @@ namespace render
 	namespace window
 	{
 		GLFWwindow* glfwWindow;
+		mesh::Mesh* mesh_test;
 		
 		// Initialises program data and opens window
 		void init(int width, int height, char* title)
@@ -32,6 +29,15 @@ namespace render
 			glewInit();
 			
 			glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+			
+			float points[] = {
+			   0.0f,  0.5f,  0.0f,
+			   0.5f, -0.5f,  0.0f,
+			  -0.5f, -0.5f,  0.0f
+			};
+			
+			mesh_test = new mesh::Mesh();
+			mesh_test->addVertices(points);
 		}
 		
 		// Starts up program
@@ -59,10 +65,13 @@ namespace render
 		// Is called when the screen must render
 		void render()
 		{
+			render::util::cls();
+			render::shader::useShaderProgram();
+			
+			mesh_test->render();
+			
 			// Check if any events have been activated (key pressed, mouse moved etc.) and call corresponding response functions
 			glfwPollEvents();
-
-			render::util::cls();
 
 			// Swap the screen buffers
 			glfwSwapBuffers(glfwWindow);
@@ -84,6 +93,7 @@ namespace render
 		// Is called when program has ended. Delete all resources here
 		void dispose()
 		{
+			delete mesh_test;
 			// Terminate GLFW, clearing any resources allocated by GLFW.
 			glfwTerminate();
 		}

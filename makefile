@@ -4,6 +4,7 @@ ThirdsEngine: build/main.o
 		build/math/vec3.o \
 		build/math/quat.o \
 		build/math/mat4.o \
+		build/mesh/mesh.o \
 		build/render/shader.o \
 		build/render/renderUtil.o \
 		build/render/window.o \
@@ -30,7 +31,11 @@ build/math/quat.o: src/math/quat.cpp src/math/quat.h
 	g++ -c -std=c++11 -lstdc++ \
 		src/math/quat.cpp -o build/math/quat.o
 
-build/render/window.o: build/render/shader.o build/render/renderUtil.o src/render/window.cpp src/render/window.h
+build/mesh/mesh.o: src/mesh/mesh.cpp src/mesh/mesh.h
+	g++ -c -std=c++11 -lstdc++ \
+		src/mesh/mesh.cpp -o build/mesh/mesh.o
+
+build/render/window.o: build/render/shader.o build/mesh/mesh.o build/render/renderUtil.o src/render/window.cpp src/render/window.h
 	g++ -c -std=c++11 -lstdc++ \
 		src/render/window.cpp -o build/render/window.o
 

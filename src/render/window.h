@@ -1,13 +1,20 @@
 #pragma once
 
+// GLEW
+#define GLEW_STATIC
+#include <GL/glew.h>
+
 // GLFW
 #include <GLFW/glfw3.h>
+
+#include "../mesh/mesh.h"
 
 namespace render
 {
 	namespace window
 	{
 		extern GLFWwindow* glfwWindow;
+		extern mesh::Mesh* mesh_test;
 		
 		void init(int width, int height, char* title);
 		
