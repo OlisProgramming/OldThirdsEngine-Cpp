@@ -12,8 +12,10 @@ namespace math
 
 		mat4();
 		static mat4 initTranslation(float x, float y, float z);
+		static mat4 initRotation(float x, float y, float z);
+		static mat4 initScale(float x, float y, float z);
 
-		mat4 mul(mat4* other);
+		mat4 mul(mat4 other);
 
 		std::string toString();
 	};

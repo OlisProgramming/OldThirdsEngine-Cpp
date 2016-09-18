@@ -9,6 +9,8 @@ namespace math
 	{
 	public:
 		math::vec3 translation;
+		math::vec3 rotation;
+		math::vec3 scale;
 		
 		Transform();
 		

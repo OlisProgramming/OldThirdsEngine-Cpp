@@ -72,7 +72,7 @@ namespace render
 			// Set uniforms here
 			
 			// Test uniform code:
-			render::shader::setUniform((char*)"transform", math::mat4::initTranslation(1, -0.5f, 0));
+			render::shader::setUniform((char*)"transform", math::mat4::initTranslation(0.0f, 0.0f, 0.0f));
 			
 			mesh_test->render();
 			
